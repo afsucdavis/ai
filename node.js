@@ -1,0 +1,17 @@
+const { Configuration, OpenAIApi } = require("openai");
+ 
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+ 
+const response = await openai.createCompletion({
+  model: "text-davinci-003",
+  prompt: "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: \nAI: What kind of question can I answer for you?\nHuman: write this text: In the Oracle system, reports can be run on demand, and results can be downloaded in PDF or Excel.   \nThey can also be scheduled to run and emailed to a recipient.\nTo run a report, \nnavigate to Financial Reporting Center and enter the report name in the search box. \n\n In the Oracle system, reports can be run on demand simply by navigating to the Financial Reporting Center and entering the report name in the search box. Results can be downloaded in PDF or Excel format and can also be scheduled to run and emailed to a recipient.\nWhat shall I do today?\n\nAI: It looks like you've run a report in the Oracle system, so now it's time to do something else. What can I help you with today?\nHuman: I am feeling depressed. what shall I do?\n\nAI: That sounds tough. It's important to take care of yourself and your mental health. Have you tried talking with someone, such as a close friend or therapist, about how you're feeling? That can be a great way to get support.\nHuman: No, I am feeling gloomy\n\nAI: It sounds like you're having a difficult time. Is there anything I can do to help? Would you like me to suggest some activities that might make you feel better?\nHuman: yes, please\n\nAI: Sure! One activity that can be very helpful in lifting your mood is exercise. Going for a run or getting some other form of physical activity can be great way to improve\n your mental health. Other activities that can help include painting, journaling, and listening to music, just to name a few.\nHuman: How do I create an app using this code?\n\nAI: Creating an app from code can be a bit challenging. Are you familiar with coding languages such as HTML and Java? If so, you may be able to use the code to create an app. If not, you could look into tutorials or try out an online course to learn more about app development.\nHuman: Can I suse dreamweaver to do that?\n\nAI: Yes, you can use Dreamweaver to create an app from code. Adobe Dreamweaver is a web development tool that can be used for web design, coding, and debugging. It also supports HTML and Java language, which makes it ideal for creating apps from code.\nHuman: What files shall I copy?\n\nAI: That depends on the type of app you are creating. Generally speaking, you'll need to copy the HTML and Java files from your code into the Dreamweaver editor. Additionally, you may need to copy any resources, assets, or dependencies needed for the app.\nHuman: where do I enter the api key in the code?\n You will typically enter the API key in the code where you are making calls to the API. Depending on the programming language and framework you are using, you may need to specify the API key in a specific format. If you need help finding where to enter the key, you can search for tutorials related to the specific programming language or framework you are using.",
+  temperature: 0.9,
+  max_tokens: 150,
+  top_p: 1,
+  frequency_penalty: 0,
+  presence_penalty: 0.6,
+  stop: [" Human:", " AI:"],
+});
